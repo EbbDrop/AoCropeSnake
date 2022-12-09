@@ -1,0 +1,12 @@
+[package]
+name = "aoc_rope_snake"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+macroquad = "0.3"
+
+
+[profile.release]
+lto = true
+opt-level = 's'
