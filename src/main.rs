@@ -119,8 +119,7 @@ async fn main() {
         clear_background(BLACK);
 
         let game_size = screen_width().min(screen_height() - 40.);
-        let sq_size = ((game_size - 5.) / SQUARES as f32) as i64;
-        let sq_size = (sq_size / 16 * 16) as f32;
+        let sq_size = (game_size - 80.) / SQUARES as f32;
         let game_size = sq_size * SQUARES as f32;
         let offset_x = (screen_width() - game_size) / 2.;
         let offset_y = (screen_height() - game_size) / 2. + 40.;
