@@ -1,4 +1,4 @@
-### Aoc Rope Snake
+### AoC Rope Snake
 
 A snake clone based on the rope physics from the [day 9](https://adventofcode.com/2022/day/9) puzzle from [Advent of code 2022](https://adventofcode.com/2022).
 The code is based of the [snake example](https://github.com/not-fl3/macroquad/blob/master/examples/snake.rs) from [macroquad](https://github.com/not-fl3/macroquad).
