@@ -59,6 +59,7 @@ async fn main() {
     let mut speed = START_SPEED;
     let mut last_update = get_time();
     let mut game_over = false;
+    let mut paused = false;
 
     let up = (0, -1);
     let down = (0, 1);
@@ -66,7 +67,7 @@ async fn main() {
     let left = (-1, 0);
 
     loop {
-        if !game_over {
+        if !game_over && !paused {
             if (is_key_down(KeyCode::Right) || is_key_down(KeyCode::D)) && snake.odir != left {
                 snake.dir = right;
             } else if (is_key_down(KeyCode::Left) || is_key_down(KeyCode::A)) && snake.odir != right
@@ -76,6 +77,8 @@ async fn main() {
                 snake.dir = up;
             } else if (is_key_down(KeyCode::Down) || is_key_down(KeyCode::S)) && snake.odir != up {
                 snake.dir = down;
+            } else if is_key_down(KeyCode::Space) { // Pause
+                paused = true;
             }
 
             if get_time() - last_update > speed {
@@ -116,6 +119,7 @@ async fn main() {
                 snake.odir = snake.dir;
             }
         }
+
         clear_background(BLACK);
 
         let game_size = screen_width().min(screen_height() - 40.);
@@ -181,6 +185,23 @@ async fn main() {
                 speed = START_SPEED;
                 last_update = get_time();
                 game_over = false;
+            }
+        }
+
+        if paused {
+            let text = "Paused. Press [enter] to continue.";
+            let text_size = measure_text(text, None, font_size as _, 1.0);
+
+            draw_text(
+                text,
+                screen_width() / 2. - text_size.width / 2.,
+                offset_y + text_size.height,
+                font_size,
+                WHITE,
+            );
+
+            if is_key_down(KeyCode::Enter) {
+                paused = false;
             }
         }
         next_frame().await
