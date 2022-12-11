@@ -10,6 +10,8 @@ Pick up the green orbs to get longer.
 
 You get a point for every square the very and of your tails visits. You also get another 50 points if you eat a orb.
 
+If you would like to pause the game at any time, press the space bar.
+
 #### Build instructions
 
 ##### Desktop
