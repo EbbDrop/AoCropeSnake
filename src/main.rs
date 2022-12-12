@@ -79,7 +79,7 @@ async fn main() {
                 snake.dir = down;
             } else if is_key_down(KeyCode::Space) { // Pause
                 paused = true;
-            } else if is_key_down(KeyCode::Escape) {
+            } else if !cfg!(target_os = "wasm") && is_key_down(KeyCode::Escape) {
                 std::process::exit(0);
             }
 
@@ -187,7 +187,7 @@ async fn main() {
                 speed = START_SPEED;
                 last_update = get_time();
                 game_over = false;
-            } else if is_key_down(KeyCode::Escape) {
+            } else if !cfg!(target_os = "wasm") && is_key_down(KeyCode::Escape) {
                 std::process::exit(0);
             }
         }
@@ -206,7 +206,7 @@ async fn main() {
 
             if is_key_down(KeyCode::Enter) {
                 paused = false;
-            } else if is_key_down(KeyCode::Escape) {
+            } else if !cfg!(target_os = "wasm") && is_key_down(KeyCode::Escape) {
                 std::process::exit(0);
             }
         }
