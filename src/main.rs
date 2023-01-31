@@ -157,7 +157,7 @@ async fn main() {
             GREEN,
         );
 
-        let text = &format!("Score: {}", score);
+        let text = &format!("Score: {score}");
         let font_size = 60.;
         let text_size = measure_text(text, None, font_size as _, 1.0);
 
